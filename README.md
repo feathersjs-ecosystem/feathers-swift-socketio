@@ -32,4 +32,4 @@ Configuration options can be found on [SocketIO's github](https://github.com/soc
 
 That's it! Your feathers application will now support a real-time socketio api.
 
-**NOTE** This framework does not support watchOS due to limitations with the internal SocketIO library.
+**NOTE:** This framework does not support watchOS due to limitations with the internal SocketIO library.
