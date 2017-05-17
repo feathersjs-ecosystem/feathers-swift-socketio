@@ -49,9 +49,7 @@ public final class SocketProvider: RealTimeProvider {
                 "accessToken": accessToken
             ]) { error, response in
                 if let _ = error {
-                    print("failed to authenticate the client")
-                } else {
-                    print("successfully authenticated the client")
+                    vApp.authenticationStorage.accessToken = nil
                 }
             }
         }
@@ -81,7 +79,7 @@ public final class SocketProvider: RealTimeProvider {
     ///   - completion: Completion callback.
     private func emit(to path: String, with data: SocketData, _ completion: @escaping FeathersCallback) {
         if client.status == .connecting {
-            client.once("connect") { [weak self] data, ack in
+            client.once("connect") { [weak self] _ in
                 guard let vSelf = self else { return }
                 vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                     let result = vSelf.handleResponseData(data: data)
