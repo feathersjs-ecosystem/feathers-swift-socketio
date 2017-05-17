@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "FeathersSwiftSocketIO"
   # Version goes here and will be used to access the git tag later on, once we have a first release.
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "SocketIO provider for FeathersSwift"
   s.description  = <<-DESC
                    SocketIO provider for FeathersSwift for making real-time connections to a
