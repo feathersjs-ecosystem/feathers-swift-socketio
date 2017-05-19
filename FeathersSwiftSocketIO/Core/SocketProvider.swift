@@ -8,8 +8,9 @@
 
 import SocketIO
 import Foundation
-import Result
+import enum Result.Result
 import Feathers
+import PromiseKit
 
 public final class SocketProvider: RealTimeProvider {
 
@@ -47,10 +48,16 @@ public final class SocketProvider: RealTimeProvider {
             vSelf.emit(to: "authenticate", with: [
                 "strategy": vApp.authenticationConfiguration.jwtStrategy,
                 "accessToken": accessToken
-            ]) { error, response in
-                if let _ = error {
+            ])
+                .then { response -> Promise<Void> in
+                    if case let .jsonObject(object) = response.data,
+                        let json = object as? [String: Any],
+                        let accessToken = json["accessToken"] as? String {
+                        vApp.authenticationStorage.accessToken = accessToken
+                    }
+                    return Promise(value: ())
+                }.catch { _ in
                     vApp.authenticationStorage.accessToken = nil
-                }
             }
         }
         client.connect(timeoutAfter: timeout) {
@@ -58,17 +65,17 @@ public final class SocketProvider: RealTimeProvider {
         }
     }
 
-    public func request(endpoint: Endpoint, _ completion: @escaping FeathersCallback) {
+    public func request(endpoint: Endpoint) -> Promise<Response> {
         let emitPath = "\(endpoint.path)::\(endpoint.method.socketRequestPath)"
-        emit(to: emitPath, with: endpoint.method.socketData, completion)
+        return emit(to: emitPath, with: endpoint.method.socketData)
     }
 
-    public func authenticate(_ path: String, credentials: [String : Any], _ completion: @escaping FeathersCallback) {
-        emit(to: "authenticate", with: credentials, completion)
+    public func authenticate(_ path: String, credentials: [String : Any]) -> Promise<Response> {
+        return emit(to: "authenticate", with: credentials)
     }
 
-    public func logout(path: String, _ completion: @escaping FeathersCallback) {
-        emit(to: "logout", with: [], completion)
+    public func logout(path: String) -> Promise<Response> {
+        return emit(to: "logout", with: [])
     }
 
     /// Emit data to a given path.
@@ -77,21 +84,38 @@ public final class SocketProvider: RealTimeProvider {
     ///   - path: Path to emit on.
     ///   - data: Data to emit.
     ///   - completion: Completion callback.
-    private func emit(to path: String, with data: SocketData, _ completion: @escaping FeathersCallback) {
-        if client.status == .connecting {
-            client.once("connect") { [weak self] _ in
-                guard let vSelf = self else { return }
+    private func emit(to path: String, with data: SocketData) -> Promise<Response> {
+        return Promise { [weak self] resolve, reject in
+            guard let vSelf = self else {
+                reject(FeathersError.unknown)
+                return
+            }
+            if vSelf.client.status == .connecting {
+                vSelf.client.once("connect") { _ in
+                    vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
+                        let result = vSelf.handleResponseData(data: data)
+                        if let error = result.error {
+                            reject(error)
+                        } else if let response = result.value {
+                            resolve(response)
+                        } else {
+                            reject(FeathersError.unknown)
+                        }
+                    }
+                }
+            } else {
                 vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                     let result = vSelf.handleResponseData(data: data)
-                    completion(result.error, result.value)
+                    if let error = result.error {
+                        reject(error)
+                    } else if let response = result.value {
+                        resolve(response)
+                    } else {
+                        reject(FeathersError.unknown)
+                    }
                 }
             }
-        } else {
-            client.emitWithAck(path, data).timingOut(after: timeout) { [weak self] data in
-                guard let vSelf = self else { return }
-                let result = vSelf.handleResponseData(data: data)
-                completion(result.error, result.value)
-            }
+
         }
     }
 
