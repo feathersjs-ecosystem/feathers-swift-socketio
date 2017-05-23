@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "FeathersSwiftSocketIO"
   # Version goes here and will be used to access the git tag later on, once we have a first release.
-  s.version      = "2.0.0"
+  s.version      = "3.0.0"
   s.summary      = "SocketIO provider for FeathersSwift"
   s.description  = <<-DESC
                    SocketIO provider for FeathersSwift for making real-time connections to a
@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
     ss.dependency 'Result'
     ss.dependency 'Feathers'
     ss.dependency 'Socket.IO-Client-Swift'
+    ss.dependency 'ReactiveSwift'
   end
 
   s.pod_target_xcconfig = {"OTHER_SWIFT_FLAGS[config=Release]" => "-suppress-warnings" }
