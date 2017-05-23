@@ -7,25 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062C3789358F63F9F1289A65 /* Pods_FeathersSwiftSocketIO_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0157A115825A095412078A /* Pods_FeathersSwiftSocketIO_tvOS.framework */; };
-		9FCCF945941A61E8D9BF5C1C /* Pods_FeathersSwiftSocketIO_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9F732A8FCC891930468DD7 /* Pods_FeathersSwiftSocketIO_macOS.framework */; };
 		EA35FC561ECB54C40018856E /* FeathersSwiftSocketIO.h in Headers */ = {isa = PBXBuildFile; fileRef = EA35FC541ECB54C40018856E /* FeathersSwiftSocketIO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA35FC851ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
 		EA35FC861ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
 		EA35FC871ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
-		FBEF8B9EE0CE962DAACA5FC0 /* Pods_FeathersSwiftSocketIO_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11ECAE9C61053D4F76448764 /* Pods_FeathersSwiftSocketIO_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11ECAE9C61053D4F76448764 /* Pods_FeathersSwiftSocketIO_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeathersSwiftSocketIO_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		241818B9870B3F9C8E423BA6 /* Pods-FeathersSwiftSocketIO-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-tvOS/Pods-FeathersSwiftSocketIO-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		42F2FBBB6B457FDE6FD9895F /* Pods-FeathersSwiftSocketIO-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-macOS/Pods-FeathersSwiftSocketIO-macOS.debug.xcconfig"; sourceTree = "<group>"; };
-		5DD43B007E5C59FE3E1BD497 /* Pods-FeathersSwiftSocketIO-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-macOS/Pods-FeathersSwiftSocketIO-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		5E9F732A8FCC891930468DD7 /* Pods_FeathersSwiftSocketIO_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeathersSwiftSocketIO_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64C0F66F5F75FC19EDFA5BE6 /* Pods-FeathersSwiftSocketIO-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-iOS/Pods-FeathersSwiftSocketIO-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		7C0157A115825A095412078A /* Pods_FeathersSwiftSocketIO_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeathersSwiftSocketIO_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D6232470AE5A420536A4202 /* Pods-FeathersSwiftSocketIO-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-iOS/Pods-FeathersSwiftSocketIO-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		C3A69C5C2F6A2D7054542C83 /* Pods-FeathersSwiftSocketIO-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeathersSwiftSocketIO-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeathersSwiftSocketIO-tvOS/Pods-FeathersSwiftSocketIO-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EA35FC511ECB54C40018856E /* FeathersSwiftSocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftSocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA35FC541ECB54C40018856E /* FeathersSwiftSocketIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeathersSwiftSocketIO.h; sourceTree = "<group>"; };
 		EA35FC551ECB54C40018856E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBEF8B9EE0CE962DAACA5FC0 /* Pods_FeathersSwiftSocketIO_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FCCF945941A61E8D9BF5C1C /* Pods_FeathersSwiftSocketIO_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,33 +53,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062C3789358F63F9F1289A65 /* Pods_FeathersSwiftSocketIO_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15C8B464740C8FA803EF916C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9D6232470AE5A420536A4202 /* Pods-FeathersSwiftSocketIO-iOS.debug.xcconfig */,
-				64C0F66F5F75FC19EDFA5BE6 /* Pods-FeathersSwiftSocketIO-iOS.release.xcconfig */,
-				42F2FBBB6B457FDE6FD9895F /* Pods-FeathersSwiftSocketIO-macOS.debug.xcconfig */,
-				5DD43B007E5C59FE3E1BD497 /* Pods-FeathersSwiftSocketIO-macOS.release.xcconfig */,
-				C3A69C5C2F6A2D7054542C83 /* Pods-FeathersSwiftSocketIO-tvOS.debug.xcconfig */,
-				241818B9870B3F9C8E423BA6 /* Pods-FeathersSwiftSocketIO-tvOS.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		EA35FC471ECB54C40018856E = {
 			isa = PBXGroup;
 			children = (
 				EA35FC531ECB54C40018856E /* FeathersSwiftSocketIO */,
 				EA35FC521ECB54C40018856E /* Products */,
 				EA35FC891ECB59540018856E /* Frameworks */,
-				15C8B464740C8FA803EF916C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,9 +111,6 @@
 				EA35FC8A1ECB59550018856E /* Feathers.framework */,
 				EA35FC8B1ECB59550018856E /* Result.framework */,
 				EA35FC8C1ECB59550018856E /* SocketIO.framework */,
-				11ECAE9C61053D4F76448764 /* Pods_FeathersSwiftSocketIO_iOS.framework */,
-				5E9F732A8FCC891930468DD7 /* Pods_FeathersSwiftSocketIO_macOS.framework */,
-				7C0157A115825A095412078A /* Pods_FeathersSwiftSocketIO_tvOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,12 +147,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA35FC591ECB54C40018856E /* Build configuration list for PBXNativeTarget "FeathersSwiftSocketIO-iOS" */;
 			buildPhases = (
-				5BF7B23ECAD677A10CDD9D8E /* [CP] Check Pods Manifest.lock */,
 				EA35FC4C1ECB54C40018856E /* Sources */,
 				EA35FC4D1ECB54C40018856E /* Frameworks */,
 				EA35FC4E1ECB54C40018856E /* Headers */,
 				EA35FC4F1ECB54C40018856E /* Resources */,
-				CE0175E3013C63345E600843 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,12 +165,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA35FC661ECB54E40018856E /* Build configuration list for PBXNativeTarget "FeathersSwiftSocketIO-macOS" */;
 			buildPhases = (
-				D561AA39712348E4B3E6E7DA /* [CP] Check Pods Manifest.lock */,
 				EA35FC5C1ECB54E40018856E /* Sources */,
 				EA35FC5D1ECB54E40018856E /* Frameworks */,
 				EA35FC5E1ECB54E40018856E /* Headers */,
 				EA35FC5F1ECB54E40018856E /* Resources */,
-				25CD2204D0808913A51F8175 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,12 +183,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA35FC731ECB55EB0018856E /* Build configuration list for PBXNativeTarget "FeathersSwiftSocketIO-tvOS" */;
 			buildPhases = (
-				F5B99AF6B7AF8A4197413771 /* [CP] Check Pods Manifest.lock */,
 				EA35FC691ECB55EB0018856E /* Sources */,
 				EA35FC6A1ECB55EB0018856E /* Frameworks */,
 				EA35FC6B1ECB55EB0018856E /* Headers */,
 				EA35FC6C1ECB55EB0018856E /* Resources */,
-				9F4F8859C2EF291C7DDA8B03 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,99 +265,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		25CD2204D0808913A51F8175 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeathersSwiftSocketIO-macOS/Pods-FeathersSwiftSocketIO-macOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5BF7B23ECAD677A10CDD9D8E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9F4F8859C2EF291C7DDA8B03 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeathersSwiftSocketIO-tvOS/Pods-FeathersSwiftSocketIO-tvOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE0175E3013C63345E600843 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeathersSwiftSocketIO-iOS/Pods-FeathersSwiftSocketIO-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D561AA39712348E4B3E6E7DA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F5B99AF6B7AF8A4197413771 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA35FC4C1ECB54C40018856E /* Sources */ = {
@@ -528,7 +397,6 @@
 		};
 		EA35FC5A1ECB54C40018856E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D6232470AE5A420536A4202 /* Pods-FeathersSwiftSocketIO-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -551,7 +419,6 @@
 		};
 		EA35FC5B1ECB54C40018856E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64C0F66F5F75FC19EDFA5BE6 /* Pods-FeathersSwiftSocketIO-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -573,7 +440,6 @@
 		};
 		EA35FC671ECB54E40018856E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42F2FBBB6B457FDE6FD9895F /* Pods-FeathersSwiftSocketIO-macOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -601,7 +467,6 @@
 		};
 		EA35FC681ECB54E40018856E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DD43B007E5C59FE3E1BD497 /* Pods-FeathersSwiftSocketIO-macOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -628,7 +493,6 @@
 		};
 		EA35FC741ECB55EB0018856E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A69C5C2F6A2D7054542C83 /* Pods-FeathersSwiftSocketIO-tvOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -653,7 +517,6 @@
 		};
 		EA35FC751ECB55EB0018856E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 241818B9870B3F9C8E423BA6 /* Pods-FeathersSwiftSocketIO-tvOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
