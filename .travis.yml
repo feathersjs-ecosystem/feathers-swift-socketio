@@ -2,7 +2,6 @@ language: objective-c
 osx_image: xcode8.3
 
 cache:
-  - cocoapods
   - directories:
     - Carthage
 
@@ -12,14 +11,12 @@ install:
   - brew update || true
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
-  - gem install cocoapods
-  - pod repo update
+  - carthage bootstrap --no-use-binaries
 before_script:
-  - pod install
   - chmod +x ./script/build
 script:
   - script/build
-xcode_workspace: FeathersSwiftSocketIO.xcworkspace
+xcode_project: FeathersSwiftSocketIO.xcodeproj
 matrix:
   include:
     - xcode_scheme: FeathersSwiftSocketIO-macOS
@@ -38,24 +35,16 @@ matrix:
         - XCODE_ACTION=build
         - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
     - script: carthage build --no-skip-current --platform mac
-      before_script:
-        - pod install
-        - carthage checkout || true
       env:
         - JOB=CARTHAGE-macOS
     - script: carthage build --no-skip-current --platform iOS
-      before_script:
-        - pod install
-        - carthage checkout || true
       env:
         - JOB=CARTHAGE-iOS
     - script: carthage build --no-skip-current --platform tvOS
-      before_script:
-        - pod install
-        - carthage checkout || true
       env:
         - JOB=CARTHAGE-tvOS
     - script:
+      - pod repo update --silent
       - travis_wait 30 pod lib lint FeathersSwiftSocketIO.podspec
       env:
         - JOB=PODSPEC
