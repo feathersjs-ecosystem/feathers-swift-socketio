@@ -11,7 +11,39 @@
 		EA35FC851ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
 		EA35FC861ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
 		EA35FC871ECB57690018856E /* SocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35FC841ECB57690018856E /* SocketProvider.swift */; };
+		EA376A6B1ED48D16001DEC50 /* Feathers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC8A1ECB59550018856E /* Feathers.framework */; };
+		EA376A6C1ED48D16001DEC50 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC8B1ECB59550018856E /* Result.framework */; };
+		EA376A6D1ED48D16001DEC50 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC8C1ECB59550018856E /* SocketIO.framework */; };
+		EA376A6F1ED48D16001DEC50 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA376A6E1ED48D16001DEC50 /* ReactiveSwift.framework */; };
+		EA376A721ED49009001DEC50 /* Feathers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC911ECB59B40018856E /* Feathers.framework */; };
+		EA376A731ED49009001DEC50 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC921ECB59B40018856E /* Result.framework */; };
+		EA376A741ED49009001DEC50 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC931ECB59B40018856E /* SocketIO.framework */; };
+		EA376A761ED4900A001DEC50 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA376A751ED4900A001DEC50 /* ReactiveSwift.framework */; };
+		EA376A7D1ED49100001DEC50 /* Feathers.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA376A791ED49100001DEC50 /* Feathers.framework.dSYM */; };
+		EA376A7E1ED49100001DEC50 /* ReactiveSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA376A7A1ED49100001DEC50 /* ReactiveSwift.framework.dSYM */; };
+		EA376A7F1ED49100001DEC50 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA376A7B1ED49100001DEC50 /* Result.framework.dSYM */; };
+		EA376A801ED49100001DEC50 /* SocketIO.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA376A7C1ED49100001DEC50 /* SocketIO.framework.dSYM */; };
+		EA376A811ED49117001DEC50 /* Feathers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FC9F1ECB5A200018856E /* Feathers.framework */; };
+		EA376A821ED49117001DEC50 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FCA01ECB5A200018856E /* Result.framework */; };
+		EA376A831ED49117001DEC50 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA35FCA11ECB5A200018856E /* SocketIO.framework */; };
+		EA376A851ED49117001DEC50 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA376A841ED49117001DEC50 /* ReactiveSwift.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA376A781ED490DE001DEC50 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				EA376A7D1ED49100001DEC50 /* Feathers.framework.dSYM in CopyFiles */,
+				EA376A7E1ED49100001DEC50 /* ReactiveSwift.framework.dSYM in CopyFiles */,
+				EA376A7F1ED49100001DEC50 /* Result.framework.dSYM in CopyFiles */,
+				EA376A801ED49100001DEC50 /* SocketIO.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EA35FC511ECB54C40018856E /* FeathersSwiftSocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftSocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +64,13 @@
 		EA35FC9F1ECB5A200018856E /* Feathers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Feathers.framework; path = Carthage/Build/tvOS/Feathers.framework; sourceTree = "<group>"; };
 		EA35FCA01ECB5A200018856E /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		EA35FCA11ECB5A200018856E /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/tvOS/SocketIO.framework; sourceTree = "<group>"; };
+		EA376A6E1ED48D16001DEC50 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		EA376A751ED4900A001DEC50 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/Mac/ReactiveSwift.framework; sourceTree = "<group>"; };
+		EA376A791ED49100001DEC50 /* Feathers.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Feathers.framework.dSYM; path = Carthage/Build/Mac/Feathers.framework.dSYM; sourceTree = "<group>"; };
+		EA376A7A1ED49100001DEC50 /* ReactiveSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveSwift.framework.dSYM; path = Carthage/Build/Mac/ReactiveSwift.framework.dSYM; sourceTree = "<group>"; };
+		EA376A7B1ED49100001DEC50 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/Mac/Result.framework.dSYM; sourceTree = "<group>"; };
+		EA376A7C1ED49100001DEC50 /* SocketIO.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SocketIO.framework.dSYM; path = Carthage/Build/Mac/SocketIO.framework.dSYM; sourceTree = "<group>"; };
+		EA376A841ED49117001DEC50 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA376A6F1ED48D16001DEC50 /* ReactiveSwift.framework in Frameworks */,
+				EA376A6B1ED48D16001DEC50 /* Feathers.framework in Frameworks */,
+				EA376A6C1ED48D16001DEC50 /* Result.framework in Frameworks */,
+				EA376A6D1ED48D16001DEC50 /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA376A761ED4900A001DEC50 /* ReactiveSwift.framework in Frameworks */,
+				EA376A721ED49009001DEC50 /* Feathers.framework in Frameworks */,
+				EA376A731ED49009001DEC50 /* Result.framework in Frameworks */,
+				EA376A741ED49009001DEC50 /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA376A851ED49117001DEC50 /* ReactiveSwift.framework in Frameworks */,
+				EA376A811ED49117001DEC50 /* Feathers.framework in Frameworks */,
+				EA376A821ED49117001DEC50 /* Result.framework in Frameworks */,
+				EA376A831ED49117001DEC50 /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +150,13 @@
 		EA35FC891ECB59540018856E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA376A841ED49117001DEC50 /* ReactiveSwift.framework */,
+				EA376A791ED49100001DEC50 /* Feathers.framework.dSYM */,
+				EA376A7A1ED49100001DEC50 /* ReactiveSwift.framework.dSYM */,
+				EA376A7B1ED49100001DEC50 /* Result.framework.dSYM */,
+				EA376A7C1ED49100001DEC50 /* SocketIO.framework.dSYM */,
+				EA376A751ED4900A001DEC50 /* ReactiveSwift.framework */,
+				EA376A6E1ED48D16001DEC50 /* ReactiveSwift.framework */,
 				EA35FC9F1ECB5A200018856E /* Feathers.framework */,
 				EA35FCA01ECB5A200018856E /* Result.framework */,
 				EA35FCA11ECB5A200018856E /* SocketIO.framework */,
@@ -151,6 +209,7 @@
 				EA35FC4D1ECB54C40018856E /* Frameworks */,
 				EA35FC4E1ECB54C40018856E /* Headers */,
 				EA35FC4F1ECB54C40018856E /* Resources */,
+				EA376A711ED48F48001DEC50 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -169,6 +228,8 @@
 				EA35FC5D1ECB54E40018856E /* Frameworks */,
 				EA35FC5E1ECB54E40018856E /* Headers */,
 				EA35FC5F1ECB54E40018856E /* Resources */,
+				EA376A771ED490A6001DEC50 /* Carthage */,
+				EA376A781ED490DE001DEC50 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -187,6 +248,7 @@
 				EA35FC6A1ECB55EB0018856E /* Frameworks */,
 				EA35FC6B1ECB55EB0018856E /* Headers */,
 				EA35FC6C1ECB55EB0018856E /* Resources */,
+				EA376A861ED4911C001DEC50 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -265,6 +327,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA376A711ED48F48001DEC50 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Feathers.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		EA376A771ED490A6001DEC50 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Feathers.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/SocketIO.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		EA376A861ED4911C001DEC50 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Feathers.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/SocketIO.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA35FC4C1ECB54C40018856E /* Sources */ = {
@@ -404,7 +522,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -426,7 +547,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -449,7 +573,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -476,7 +603,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -500,7 +630,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -524,7 +657,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftSocketIO/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -9,12 +9,17 @@
 import SocketIO
 import Foundation
 import enum Result.Result
+import enum Result.NoError
 import Feathers
-import PromiseKit
+import ReactiveSwift
 
-public final class SocketProvider: RealTimeProvider {
+public final class SocketProvider: Provider {
 
     public let baseURL: URL
+
+    public var supportsRealtimeEvents: Bool {
+        return true
+    }
 
     /// SocketIO client configuration object.
     private let configuration: SocketIOClientConfiguration
@@ -49,32 +54,32 @@ public final class SocketProvider: RealTimeProvider {
                 "strategy": vApp.authenticationConfiguration.jwtStrategy,
                 "accessToken": accessToken
             ])
-                .then { response -> Promise<Void> in
-                    if case let .jsonObject(object) = response.data,
+                .on(failed: { _ in
+                    vApp.authenticationStorage.accessToken = accessToken
+                }, value: { value in
+                    if case let .jsonObject(object) = value.data,
                         let json = object as? [String: Any],
                         let accessToken = json["accessToken"] as? String {
                         vApp.authenticationStorage.accessToken = accessToken
                     }
-                    return Promise(value: ())
-                }.catch { _ in
-                    vApp.authenticationStorage.accessToken = nil
-            }
+                })
+            .start()
         }
         client.connect(timeoutAfter: timeout) {
             print("feathers socket failed to connect")
         }
     }
 
-    public func request(endpoint: Endpoint) -> Promise<Response> {
+    public func request(endpoint: Endpoint) -> SignalProducer<Response, FeathersError> {
         let emitPath = "\(endpoint.path)::\(endpoint.method.socketRequestPath)"
         return emit(to: emitPath, with: endpoint.method.socketData)
     }
 
-    public func authenticate(_ path: String, credentials: [String : Any]) -> Promise<Response> {
+    public func authenticate(_ path: String, credentials: [String : Any]) -> SignalProducer<Response, FeathersError> {
         return emit(to: "authenticate", with: credentials)
     }
 
-    public func logout(path: String) -> Promise<Response> {
+    public func logout(path: String) -> SignalProducer<Response, FeathersError> {
         return emit(to: "logout", with: [])
     }
 
@@ -84,10 +89,10 @@ public final class SocketProvider: RealTimeProvider {
     ///   - path: Path to emit on.
     ///   - data: Data to emit.
     ///   - completion: Completion callback.
-    private func emit(to path: String, with data: SocketData) -> Promise<Response> {
-        return Promise { [weak self] resolve, reject in
+    private func emit(to path: String, with data: SocketData) -> SignalProducer<Response, FeathersError> {
+        return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
-                reject(FeathersError.unknown)
+                observer.sendInterrupted()
                 return
             }
             if vSelf.client.status == .connecting {
@@ -95,11 +100,11 @@ public final class SocketProvider: RealTimeProvider {
                     vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                         let result = vSelf.handleResponseData(data: data)
                         if let error = result.error {
-                            reject(error)
+                            observer.send(error: error)
                         } else if let response = result.value {
-                            resolve(response)
+                            observer.send(value: response)
                         } else {
-                            reject(FeathersError.unknown)
+                            observer.send(error: .unknown)
                         }
                     }
                 }
@@ -107,11 +112,11 @@ public final class SocketProvider: RealTimeProvider {
                 vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                     let result = vSelf.handleResponseData(data: data)
                     if let error = result.error {
-                        reject(error)
+                        observer.send(error: error)
                     } else if let response = result.value {
-                        resolve(response)
+                        observer.send(value: response)
                     } else {
-                        reject(FeathersError.unknown)
+                        observer.send(error: .unknown)
                     }
                 }
             }
@@ -155,18 +160,37 @@ public final class SocketProvider: RealTimeProvider {
 
     // MARK: - RealTimeProvider
 
-    public func on(event: String, callback: @escaping ([String: Any]) -> ()) {
-        client.on(event, callback: { data, _ in
-            guard let object = data.first as? [String: Any] else { return }
-            callback(object)
-        })
+    public func on(event: String) -> Signal<[String: Any], NoError> {
+        return Signal { [weak client = client] observer in
+            guard let vClient = client else {
+                observer.sendInterrupted()
+                return ActionDisposable {}
+            }
+            vClient.on(event, callback: { data, _ in
+                guard let object = data.first as? [String: Any] else { return }
+                observer.send(value: object)
+            })
+            return ActionDisposable {
+                vClient.off(event)
+            }
+        }
     }
 
-    public func once(event: String, callback: @escaping ([String : Any]) -> ()) {
-        client.once(event, callback: { data, _ in
-            guard let object = data.first as? [String: Any] else { return }
-            callback(object)
-        })
+    public func once(event: String) -> Signal<[String: Any], NoError> {
+        return Signal { [weak client = client] observer in
+            guard let vClient = client else {
+                observer.sendInterrupted()
+                return ActionDisposable {}
+            }
+            vClient.once(event, callback: { data, _ in
+                guard let object = data.first as? [String: Any] else { return }
+                observer.send(value: object)
+                observer.sendCompleted()
+            })
+            return ActionDisposable {
+                vClient.off(event)
+            }
+        }
     }
 
     public func off(event: String) {
