@@ -57,7 +57,7 @@ public final class SocketProvider: Provider {
                 .on(failed: { _ in
                     vApp.authenticationStorage.accessToken = accessToken
                 }, value: { value in
-                    if case let .jsonObject(object) = value.data,
+                    if case let .object(object) = value.data,
                         let json = object as? [String: Any],
                         let accessToken = json["accessToken"] as? String {
                         vApp.authenticationStorage.accessToken = accessToken
@@ -70,16 +70,16 @@ public final class SocketProvider: Provider {
         }
     }
 
-    public func request(endpoint: Endpoint) -> SignalProducer<Response, FeathersError> {
+    public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
         let emitPath = "\(endpoint.path)::\(endpoint.method.socketRequestPath)"
         return emit(to: emitPath, with: endpoint.method.socketData)
     }
 
-    public func authenticate(_ path: String, credentials: [String : Any]) -> SignalProducer<Response, FeathersError> {
+    public func authenticate(_ path: String, credentials: [String : Any]) -> SignalProducer<Response, AnyFeathersError> {
         return emit(to: "authenticate", with: credentials)
     }
 
-    public func logout(path: String) -> SignalProducer<Response, FeathersError> {
+    public func logout(path: String) -> SignalProducer<Response, AnyFeathersError> {
         return emit(to: "logout", with: [])
     }
 
@@ -89,7 +89,7 @@ public final class SocketProvider: Provider {
     ///   - path: Path to emit on.
     ///   - data: Data to emit.
     ///   - completion: Completion callback.
-    private func emit(to path: String, with data: SocketData) -> SignalProducer<Response, FeathersError> {
+    private func emit(to path: String, with data: SocketData) -> SignalProducer<Response, AnyFeathersError> {
         return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
                 observer.sendInterrupted()
@@ -104,7 +104,7 @@ public final class SocketProvider: Provider {
                         } else if let response = result.value {
                             observer.send(value: response)
                         } else {
-                            observer.send(error: .unknown)
+                            observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
                         }
                     }
                 }
@@ -116,7 +116,7 @@ public final class SocketProvider: Provider {
                     } else if let response = result.value {
                         observer.send(value: response)
                     } else {
-                        observer.send(error: .unknown)
+                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
                     }
                 }
             }
@@ -128,20 +128,20 @@ public final class SocketProvider: Provider {
     ///
     /// - Parameter data: Socket response data.
     /// - Returns: Result object with error or response.
-    private func handleResponseData(data: [Any]) -> Result<Response, FeathersError> {
+    private func handleResponseData(data: [Any]) -> Result<Response, AnyFeathersError> {
         if let noAck = data.first as? String, noAck == "NO ACK" {
-            return .failure(.notFound)
-        } else if let errorData = data.first as? [String: Any], let code = errorData["code"] as? Int, let error = FeathersError(statusCode: code) {
-            return .failure(error)
+            return .failure(AnyFeathersError(FeathersNetworkError.notFound))
+        } else if let errorData = data.first as? [String: Any], let code = errorData["code"] as? Int, let error = FeathersNetworkError(statusCode: code) {
+            return .failure(AnyFeathersError(error))
         } else if let jsonObject = data.last as? [String: Any] {
             if let pagination = parsePagination(data: jsonObject), let data = jsonObject["data"] as? [Any] {
-                return .success(Response(pagination: pagination, data: .jsonArray(data)))
+                return .success(Response(pagination: pagination, data: .list(data)))
             }
-            return .success(Response(pagination: nil, data: .jsonObject(jsonObject)))
+            return .success(Response(pagination: nil, data: .object(jsonObject)))
         } else if let jsonArray = data.last as? [Any] {
-            return .success(Response(pagination: nil, data: .jsonArray(jsonArray)))
+            return .success(Response(pagination: nil, data: .list(jsonArray)))
         }
-        return .failure(.unknown)
+        return .failure(AnyFeathersError(FeathersNetworkError.unknown))
     }
 
     /// Parse pagination data if any.
@@ -220,17 +220,17 @@ fileprivate extension Service.Method {
 
     fileprivate var socketData: [SocketData?] {
         switch self {
-        case .find(let parameters):
-            return [parameters ?? [:]]
-        case .get(let id, let parameters):
-            return [id, parameters ?? [:]]
-        case .create(let data, let parameters):
-            return [data, parameters ?? [:]]
-        case .update(let id, let data, let parameters),
-             .patch(let id, let data, let parameters):
-            return [id ?? nil, data, parameters ?? [:]]
-        case .remove(let id, let parameters):
-            return [id ?? nil, parameters]
+        case .find(let query):
+            return [query?.serialize() ?? [:]]
+        case .get(let id, let query):
+            return [id, query?.serialize() ?? [:]]
+        case .create(let data, let query):
+            return [data, query?.serialize() ?? [:]]
+        case .update(let id, let data, let query),
+             .patch(let id, let data, let query):
+            return [id ?? nil, data, query?.serialize() ?? [:]]
+        case .remove(let id, let query):
+            return [id ?? nil, query?.serialize()]
         }
     }
     
