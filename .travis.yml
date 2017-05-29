@@ -1,11 +1,6 @@
 language: objective-c
 osx_image: xcode8.3
 
-cache:
-  - cocoapods
-  - directories:
-    - Carthage
-
 before_install: true
 install:
   - rvm get stable || true
