@@ -28,7 +28,7 @@ public final class SocketProvider: Provider {
     private let client: SocketIOClient
 
     /// Socket timeout for `connect` and all emits.
-    private let timeout: Int
+    private let timeout: Double
 
     /// Socket provider initializer.
     ///
@@ -37,7 +37,7 @@ public final class SocketProvider: Provider {
     ///   - configuration: Socket configuration object. See `SocketIO` for more details
     /// on the possible options.
     ///   - timeout: Socket timeout.
-    public init(baseURL: URL, configuration: SocketIOClientConfiguration, timeout: Int = 5) {
+    public init(baseURL: URL, configuration: SocketIOClientConfiguration, timeout: Double = 5) {
         self.baseURL = baseURL
         self.configuration = configuration
         self.timeout = timeout
