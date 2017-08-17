@@ -164,13 +164,13 @@ public final class SocketProvider: Provider {
         return Signal { [weak client = client] observer in
             guard let vClient = client else {
                 observer.sendInterrupted()
-                return ActionDisposable {}
+                return AnyDisposable {}
             }
             vClient.on(event, callback: { data, _ in
                 guard let object = data.first as? [String: Any] else { return }
                 observer.send(value: object)
             })
-            return ActionDisposable {
+            return AnyDisposable {
                 vClient.off(event)
             }
         }
@@ -180,14 +180,14 @@ public final class SocketProvider: Provider {
         return Signal { [weak client = client] observer in
             guard let vClient = client else {
                 observer.sendInterrupted()
-                return ActionDisposable {}
+                return AnyDisposable {}
             }
             vClient.once(event, callback: { data, _ in
                 guard let object = data.first as? [String: Any] else { return }
                 observer.send(value: object)
                 observer.sendCompleted()
             })
-            return ActionDisposable {
+            return AnyDisposable {
                 vClient.off(event)
             }
         }
