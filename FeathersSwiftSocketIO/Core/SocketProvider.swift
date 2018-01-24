@@ -96,7 +96,7 @@ public final class SocketProvider: Provider {
                 return
             }
             if vSelf.client.status == .connecting {
-                vSelf.client.once("connect") { _ in
+                vSelf.client.once("connect") { _,_  in
                     vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                         let result = vSelf.handleResponseData(data: data)
                         if let error = result.error {
