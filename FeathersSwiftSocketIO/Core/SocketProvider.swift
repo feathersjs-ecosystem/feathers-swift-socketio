@@ -67,7 +67,7 @@ public final class SocketProvider: Provider {
     }
 
     public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
-        let emitPath = "\(endpoint.path)::\(endpoint.method.socketRequestPath)"
+        let emitPath = "\(endpoint.method.socketRequestPath) \(endpoint.path)"
         return emit(to: emitPath, with: endpoint.method.socketData)
     }
 
