@@ -44,7 +44,7 @@ matrix:
     - script:
       - carthage bootstrap --no-use-binaries --platform watchOS
       - script/build
-      xcode_scheme: Feathers-watchOS
+      xcode_scheme: FeatherSwiftSocketIO-watchOS
       env:
         - XCODE_SDK=watchsimulator
         - XCODE_ACTION=build
