@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA35FC6D1ECB55EB0018856E"
-               BuildableName = "FeathersSwiftSocketIO.framework"
-               BlueprintName = "FeathersSwiftSocketIO-tvOS"
+               BlueprintIdentifier = "C63859F8201F9C65007A09A6"
+               BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+               BlueprintName = "FeathersSwiftSocketIO-watchOS"
                ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA35FC6D1ECB55EB0018856E"
-            BuildableName = "FeathersSwiftSocketIO.framework"
-            BlueprintName = "FeathersSwiftSocketIO-tvOS"
+            BlueprintIdentifier = "C63859F8201F9C65007A09A6"
+            BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+            BlueprintName = "FeathersSwiftSocketIO-watchOS"
             ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA35FC6D1ECB55EB0018856E"
-            BuildableName = "FeathersSwiftSocketIO.framework"
-            BlueprintName = "FeathersSwiftSocketIO-tvOS"
+            BlueprintIdentifier = "C63859F8201F9C65007A09A6"
+            BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+            BlueprintName = "FeathersSwiftSocketIO-watchOS"
             ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
