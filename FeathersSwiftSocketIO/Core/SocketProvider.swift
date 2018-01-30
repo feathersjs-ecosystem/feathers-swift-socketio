@@ -20,10 +20,7 @@ public final class SocketProvider: Provider {
     public var supportsRealtimeEvents: Bool {
         return true
     }
-
-    /// SocketIO client configuration object.
-    private let configuration: SocketIOClientConfiguration
-
+    
     /// SocketIO client.
     private let client: SocketIOClient
 
@@ -37,11 +34,10 @@ public final class SocketProvider: Provider {
     ///   - configuration: Socket configuration object. See `SocketIO` for more details
     /// on the possible options.
     ///   - timeout: Socket timeout.
-    public init(baseURL: URL, configuration: SocketIOClientConfiguration, timeout: Double = 5) {
-        self.baseURL = baseURL
-        self.configuration = configuration
+    public init(manager: SocketManager, timeout: Double = 5) {
+        self.baseURL = manager.socketURL
         self.timeout = timeout
-        client = SocketIOClient(socketURL: baseURL, config: configuration)
+        client = manager.defaultSocket
     }
 
     public func setup(app: Feathers) {
@@ -71,8 +67,8 @@ public final class SocketProvider: Provider {
     }
 
     public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
-        let emitPath = "\(endpoint.path)::\(endpoint.method.socketRequestPath)"
-        return emit(to: emitPath, with: endpoint.method.socketData)
+        let emitPath = endpoint.method.socketRequestPath
+        return emit(to: emitPath, with: [endpoint.path] + endpoint.method.socketData)
     }
 
     public func authenticate(_ path: String, credentials: [String : Any]) -> SignalProducer<Response, AnyFeathersError> {
@@ -96,7 +92,7 @@ public final class SocketProvider: Provider {
                 return
             }
             if vSelf.client.status == .connecting {
-                vSelf.client.once("connect") { _ in
+                vSelf.client.once("connect") { _,_  in
                     vSelf.client.emitWithAck(path, data).timingOut(after: vSelf.timeout) { data in
                         let result = vSelf.handleResponseData(data: data)
                         if let error = result.error {
@@ -161,35 +157,37 @@ public final class SocketProvider: Provider {
     // MARK: - RealTimeProvider
 
     public func on(event: String) -> Signal<[String: Any], NoError> {
-        return Signal { [weak client = client] observer in
+        return Signal { [weak client = client] observer, lifetime in
             guard let vClient = client else {
                 observer.sendInterrupted()
-                return AnyDisposable {}
+                return
             }
             vClient.on(event, callback: { data, _ in
                 guard let object = data.first as? [String: Any] else { return }
                 observer.send(value: object)
             })
-            return AnyDisposable {
+            let disposable = AnyDisposable {
                 vClient.off(event)
             }
+            lifetime += disposable
         }
     }
 
     public func once(event: String) -> Signal<[String: Any], NoError> {
-        return Signal { [weak client = client] observer in
+        return Signal { [weak client = client] observer, lifetime in
             guard let vClient = client else {
                 observer.sendInterrupted()
-                return AnyDisposable {}
+                return
             }
             vClient.once(event, callback: { data, _ in
                 guard let object = data.first as? [String: Any] else { return }
                 observer.send(value: object)
                 observer.sendCompleted()
             })
-            return AnyDisposable {
+            let disposable = AnyDisposable {
                 vClient.off(event)
             }
+            lifetime += disposable
         }
     }
 
