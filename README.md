@@ -27,7 +27,7 @@ To use FeathersSwiftSocket, create an instance of `SocketProvider` and initializ
 ```swift
 let manager = SocketManager(socketURL: URL(string: "https://myawesomefeathersapi.com")!, config: [.log(true), .compress])
 let provider = SocketProvider(manager: manager, timeout: 5)
-let feathersRestApp = Feathers(provider: provider)
+let feathersSocketApp = Feathers(provider: provider)
 ```
 
 Configuration options can be found on [SocketIO's github](https://github.com/socketio/socket.io-client-swift).

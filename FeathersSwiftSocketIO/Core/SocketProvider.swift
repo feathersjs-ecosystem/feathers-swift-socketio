@@ -14,19 +14,19 @@ import Feathers
 import ReactiveSwift
 
 public final class SocketProvider: Provider {
-
+    
     public let baseURL: URL
-
+    
     public var supportsRealtimeEvents: Bool {
         return true
     }
     
     /// SocketIO client.
     private let client: SocketIOClient
-
+    
     /// Socket timeout for `connect` and all emits.
     private let timeout: Double
-
+    
     /// Socket provider initializer.
     ///
     /// - Parameters:
@@ -39,7 +39,7 @@ public final class SocketProvider: Provider {
         self.timeout = timeout
         client = manager.defaultSocket
     }
-
+    
     public func setup(app: Feathers) {
         // Attempt to authenticate using a previously stored token once the client connects.
         client.once("connect") { [weak app = app, weak self] data, ack in
@@ -49,7 +49,7 @@ public final class SocketProvider: Provider {
             vSelf.emit(to: "authenticate", with: [
                 "strategy": vApp.authenticationConfiguration.jwtStrategy,
                 "accessToken": accessToken
-            ])
+                ])
                 .on(failed: { _ in
                     vApp.authenticationStorage.accessToken = accessToken
                 }, value: { value in
@@ -59,26 +59,26 @@ public final class SocketProvider: Provider {
                         vApp.authenticationStorage.accessToken = accessToken
                     }
                 })
-            .start()
+                .start()
         }
         client.connect(timeoutAfter: timeout) {
             print("feathers socket failed to connect")
         }
     }
-
+    
     public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
         let emitPath = endpoint.method.socketRequestPath
         return emit(to: emitPath, with: [endpoint.path] + endpoint.method.socketData)
     }
-
+    
     public func authenticate(_ path: String, credentials: [String : Any]) -> SignalProducer<Response, AnyFeathersError> {
         return emit(to: "authenticate", with: credentials)
     }
-
+    
     public func logout(path: String) -> SignalProducer<Response, AnyFeathersError> {
         return emit(to: "logout", with: [])
     }
-
+    
     /// Emit data to a given path.
     ///
     /// - Parameters:
@@ -116,10 +116,10 @@ public final class SocketProvider: Provider {
                     }
                 }
             }
-
+            
         }
     }
-
+    
     /// Parse and handle socket response data.
     ///
     /// - Parameter data: Socket response data.
@@ -139,7 +139,7 @@ public final class SocketProvider: Provider {
         }
         return .failure(AnyFeathersError(FeathersNetworkError.unknown))
     }
-
+    
     /// Parse pagination data if any.
     ///
     /// - Parameter data: Data to parse from.
@@ -153,9 +153,9 @@ public final class SocketProvider: Provider {
         }
         return Pagination(total: total, limit: limit, skip: skip)
     }
-
+    
     // MARK: - RealTimeProvider
-
+    
     public func on(event: String) -> Signal<[String: Any], NoError> {
         return Signal { [weak client = client] observer, lifetime in
             guard let vClient = client else {
@@ -172,7 +172,7 @@ public final class SocketProvider: Provider {
             lifetime += disposable
         }
     }
-
+    
     public func once(event: String) -> Signal<[String: Any], NoError> {
         return Signal { [weak client = client] observer, lifetime in
             guard let vClient = client else {
@@ -190,22 +190,22 @@ public final class SocketProvider: Provider {
             lifetime += disposable
         }
     }
-
+    
     public func off(event: String) {
         client.off(event)
     }
-
+    
     // MARK: - Deinit
-
+    
     deinit {
         client.disconnect()
     }
-
+    
 }
 
 fileprivate extension Service.Method {
-
-    fileprivate var socketRequestPath: String {
+    
+    var socketRequestPath: String {
         switch self {
         case .find: return "find"
         case .get: return "get"
@@ -215,8 +215,8 @@ fileprivate extension Service.Method {
         case .remove: return "removed"
         }
     }
-
-    fileprivate var socketData: [SocketData?] {
+    
+    var socketData: [SocketData?] {
         switch self {
         case .find(let query):
             return [query?.serialize() ?? [:]]
@@ -233,4 +233,3 @@ fileprivate extension Service.Method {
     }
     
 }
-
