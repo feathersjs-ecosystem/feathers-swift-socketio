@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C63859F8201F9C65007A09A6"
-               BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+               BuildableName = "FeathersSwiftSocketIO.framework"
                BlueprintName = "FeathersSwiftSocketIO-watchOS"
                ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
             </BuildableReference>
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -48,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C63859F8201F9C65007A09A6"
-            BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+            BuildableName = "FeathersSwiftSocketIO.framework"
             BlueprintName = "FeathersSwiftSocketIO-watchOS"
             ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
          </BuildableReference>
@@ -66,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C63859F8201F9C65007A09A6"
-            BuildableName = "FeathersSwiftSocketIO_watchOS.framework"
+            BuildableName = "FeathersSwiftSocketIO.framework"
             BlueprintName = "FeathersSwiftSocketIO-watchOS"
             ReferencedContainer = "container:FeathersSwiftSocketIO.xcodeproj">
          </BuildableReference>
